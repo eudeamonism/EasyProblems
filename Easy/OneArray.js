@@ -89,23 +89,6 @@ const twoSum = (digits, target) => {
 let Blah = twoSum(digits, target);
 console.log(Blah);
 
-//Pallindrome
-
-const isPalindrome = (x) => {
-	const strX = x.toString(); // convert number to string for easier manipulation
-	const len = strX.length; // get length of string
-	for (let i = 0; i < len / 2; i++) {
-		// only need to iterate through half of string
-		if (strX[i] !== strX[len - 1 - i]) {
-			// compare first and last characters
-			return false; // if they are not the same, return false
-		}
-	}
-	return true; // if all characters match, return true
-};
-
-console.log(isPalindrome('abba'));
-
 //Pallindrome 2
 //A pallindrome is repeatable front and back for example racecar
 //racecar has seven letters. Seven divide by two equals = 3.5 = 3
@@ -126,3 +109,39 @@ function isPalindrome2(str) {
 }
 
 console.log(isPalindrome2(str));
+
+
+//Roman to Integer
+
+function romanToInt(s) {
+	const romanToIntMap = new Map([
+		['I', 1],
+		['V', 5],
+		['X', 10],
+		['L', 50],
+		['C', 100],
+		['D', 500],
+		['M', 1000],
+	]);
+	let result = 0;
+    for (let i = 0; i < s.length; i++) {
+        //This gets the first index
+        const current = romanToIntMap.get(s[i]);
+        //this gets the next index by adding one
+        const next = romanToIntMap.get(s[i + 1]);
+        //This checks if a next number exists, if so it then compares
+        if (next && next > current) {
+            //this is result = result + (next - current)
+            result += next - current;
+            //since we used the next index we skip it
+			i++;
+        } else {
+            // we add: result = result + current
+			result += current;
+		}
+    }
+    //the iteration is complete and we return result
+	return result;
+}
+
+console.log(romanToInt('IVXX'));
