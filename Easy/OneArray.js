@@ -220,3 +220,23 @@ aStack.push(32)
 console.log(aStack.peek());
 aStack.pop()
 console.log(aStack.readAll())
+
+//Write a function that accepts a String as an argument. The function should capitalize every other letter in the string. Then it should return the conveted String.
+
+const string = 'HelloWorld'
+
+const convertFunc = function(String){
+  flattenedString = string.toLowerCase().split("")
+  let convertedString = '';
+
+  for (let i = 0; i < flattenedString.length; i++){
+    if(i % 2 === 0){
+      convertedString += flattenedString[i].toLowerCase()
+    }else{
+      convertedString += flattenedString[i].toUpperCase()
+    }
+  }
+  return convertedString;
+}
+
+console.log(convertFunc(string))
